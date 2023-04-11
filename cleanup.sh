@@ -1,6 +1,6 @@
 #!/bin/bash
 # Check input
-if [[ -z $1 && -z $2 ]]; then
+if [[ -z $1 || -z $2 ]]; then
     echo "Usage: cleanup.sh dir ver"
     exit 1
 else
@@ -22,10 +22,10 @@ do
     DISTR_VER=$(echo $DISTR | awk -F_ '{print $NF}')
     if [ $DISTR_VER = "`echo -e "$DISTR_VER\n$VER" | sort -V -r | head -n1`" ];
     then
-        echo "new $DISTR_VER"
+        echo "new $DISTR"
     else
         #Old
-        echo "delete $DISTR"
+        echo "delete old $DISTR"
         rm -r $DISTR
     fi
 done
