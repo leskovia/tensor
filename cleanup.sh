@@ -29,4 +29,3 @@ do
         rm -r $DISTR
     fi
 done
-
